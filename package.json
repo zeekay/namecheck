@@ -1,0 +1,21 @@
+{
+  "name": "namecheck",
+  "version": "0.0.1",
+  "description": "namecheck npm like a pro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeekay/namecheck"
+  },
+  "keywords": [
+    "npm",
+    "name"
+  ],
+  "author": "Zach Kelling <zeekayy@gmail.com> (http://whatit.is)",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "66cfe4d1a0783fbbfcf13f84c129ebbcaf9e4eca"
+}
