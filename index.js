@@ -13,5 +13,7 @@ https.get('https://npmjs.org/package/' + name, function(res) {
     console.log(name + ' is available!');
   } else {
     console.log('something went wrong!');
+    process.exit(1)
   }
+  process.exit(0)
 });
