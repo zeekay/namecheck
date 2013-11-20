@@ -1,13 +1,17 @@
 {
   "name": "namecheck",
   "version": "0.0.3",
-  "description": "namecheck npm like a pro",
+  "description": "Namecheck npm like a pro.",
+  "homepage": "http://github.com/zeekay/namecheck",
+  "bugs": {
+    "url": "http://github.com/zeekay/namecheck/issues"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "namecheck": "./bin/namecheck"
+    "namecheck": "bin/namecheck"
   },
   "repository": {
     "type": "git",
@@ -15,10 +19,9 @@
   },
   "keywords": [
     "npm",
-    "name"
+    "name",
+    "namecheck"
   ],
-  "author": "Zach Kelling <zeekayy@gmail.com> (http://whatit.is)",
-  "license": "BSD",
-  "readmeFilename": "README.md",
-  "gitHead": "66cfe4d1a0783fbbfcf13f84c129ebbcaf9e4eca"
+  "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
+  "license": "BSD"
 }
