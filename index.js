@@ -6,9 +6,9 @@ if (name == null) {
   process.exit(1);
 }
 
-https.get('https://npmjs.org/package/' + name, function(res) {
+https.get('https://www.npmjs.org/package/' + name, function(res) {
   if (res.statusCode === 200) {
-    console.log(name + ' is unavailable: https://npmjs.org/package/' + name);
+    console.log(name + ' is unavailable: https://www.npmjs.org/package/' + name);
   } else if (res.statusCode === 404) {
     console.log(name + ' is available!');
   } else {
