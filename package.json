@@ -28,5 +28,8 @@
       "type": "MIT",
       "url": "https://github.com/zeekay/namecheck/blob/master/LICENSE"
     }
-  ]
+  ],
+  "dependencies": {
+    "request": "^2.55.0"
+  }
 }
