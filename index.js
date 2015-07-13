@@ -8,21 +8,31 @@ if (!names.length) {
   process.exit(1);
 }
 
-var checked = 0;
-names.forEach(function(name){
+var checked = [],
+    pos = 0;
+
+names.forEach(function(name, i){
   request('https://registry.npmjs.org/' + name, function(err, res) {
-    checked++;
-    if (res.statusCode === 200) {
-      console.log(name + ' is unavailable: https://www.npmjs.org/package/' + name);
-    } else if (res.statusCode === 404) {
-      console.log(name + ' is available!');
-    } else {
-      console.log('something went wrong checking', name);
-      if (err) console.error(err);
-    }
-    if (checked === names.length) process.exit(0);
+    checked[i] = res || {};
+    checked[i].name = name;
+    report();
   });
 });
+
+function report () {
+  var current;
+  for (; checked[pos]; pos++) {
+    current = checked[pos];
+    if (current.statusCode === 200) {
+      console.log(current.name + ' is unavailable: https://www.npmjs.org/package/' + current.name);
+    } else if (current.statusCode === 404) {
+      console.log(current.name + ' is available!');
+    } else {
+      console.log('something went wrong checking', current.name);
+    }
+    if (pos === names.length - 1) process.exit(0);
+  }
+}
 
 var TIME = 3000;
 setTimeout(function(){
