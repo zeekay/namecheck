@@ -8,7 +8,7 @@ if (name == null) {
   process.exit(1);
 }
 
-request('https://www.npmjs.org/package/' + name, function(err, res) {
+request('https://registry.npmjs.org/' + name, function(err, res) {
   if (res.statusCode === 200) {
     console.log(name + ' is unavailable: https://www.npmjs.org/package/' + name);
   } else if (res.statusCode === 404) {
