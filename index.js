@@ -1,4 +1,5 @@
 var request = require('request');
+var chalk = require('chalk');
 
 // Process args
 var names = process.argv.slice(2);
@@ -26,9 +27,9 @@ function report () {
     if (current.statusCode === 200) {
       console.log(current.name + ' is unavailable: https://www.npmjs.org/package/' + current.name);
     } else if (current.statusCode === 404) {
-      console.log(current.name + ' is available!');
+      console.log(chalk.green(current.name) + ' is available!');
     } else {
-      console.log('something went wrong checking', current.name);
+      console.log(chalk.red('something went wrong checking'), current.name);
     }
     if (pos === names.length - 1) process.exit(0);
   }
@@ -36,6 +37,6 @@ function report () {
 
 var TIME = 3000;
 setTimeout(function(){
-  console.error('Timed out after', TIME / 1000, 'seconds' );
+  console.error(chalk.yellow('Timed out after', TIME / 1000, 'seconds'));
   process.exit(1);
 }, TIME);
