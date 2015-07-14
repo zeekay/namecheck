@@ -13,7 +13,7 @@ var checked = [],
     pos = 0;
 
 names.forEach(function(name, i){
-  request('https://registry.npmjs.org/' + name, function(err, res) {
+  request.head('https://registry.npmjs.org/' + name, function(err, res) {
     checked[i] = res || {};
     checked[i].name = name;
     report();
