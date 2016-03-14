@@ -23,6 +23,9 @@
     "namecheck"
   ],
   "author": "Zach Kelling <zk@monoid.io> (http://zeekay.io)",
+  "contributors": [
+    "Gabriel Lebec <glebec@gmail.com> (https://github.com/glebec)"
+  ],
   "licenses": [
     {
       "type": "MIT",
