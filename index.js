@@ -1,4 +1,4 @@
-var request = require('request');
+var http = require('http');
 var chalk = require('chalk');
 
 // Process args
@@ -13,13 +13,27 @@ var checked = [],
     pos = 0;
 
 names.forEach(function(name, i){
-  request.head('https://registry.npmjs.org/' + name, function(err, res) {
-    checked[i] = res || {};
-    checked[i].name = name;
-    checked[i].err = err;
-    report();
-  });
+  http.request({
+    method: 'HEAD',
+    hostname: 'registry.npmjs.org',
+    path: '/' + name
+  })
+  .on('response', function (res) {
+    collectResult(null, res, i, name);
+  })
+  .on('error', function (err) {
+    collectResult(err, null, i, name);
+  })
+  .end();
 });
+
+function collectResult (err, res, i, name) {
+  if (checked[i]) return;
+  checked[i] = res || {};
+  checked[i].name = name;
+  checked[i].err = err;
+  report();
+}
 
 function report () {
   var current;
