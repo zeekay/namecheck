@@ -40,16 +40,15 @@ function report () {
   for (; checked[pos]; pos++) {
     current = checked[pos];
     if (current.statusCode === 200) {
-      console.log(current.name, 'is unavailable: https://www.npmjs.org/package/' + current.name);
+      console.log(chalk.grey(current.name, 'is unavailable: https://www.npmjs.org/package/' + current.name));
     } else if (current.statusCode === 404) {
       console.log(chalk.green(current.name), 'is available!');
     } else if (current.err) {
-      console.error(chalk.red('error checking'), current.name);
-      console.error(chalk.gray(current.err));
+      console.error(current.name, chalk.red(current.err));
     } else if (current.timeout) {
-      console.error(chalk.yellow(current.name, 'timed out'));
+      console.error(current.name, chalk.yellow('timed out'));
     } else {
-      console.error(chalk.blue(current.name, 'had status code', current.statusCode));
+      console.error(current.name, chalk.magenta(current.statusCode, http.STATUS_CODES[current.statusCode]));
     }
     if (pos === names.length - 1) process.exit(0);
   }
